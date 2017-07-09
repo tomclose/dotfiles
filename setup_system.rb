@@ -49,8 +49,8 @@ end
 
 # install janus vim
 heading("Installing janus vim")
-unless Dir.exists?("#{Dir.home}/.vim")
-  #x("curl -L https://bit.ly/janus-bootstrap | bash")
+unless File.exists?("#{Dir.home}/.vimrc")
+  x("curl -L https://bit.ly/janus-bootstrap | bash")
 end
 
 # install zsh
