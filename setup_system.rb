@@ -38,6 +38,7 @@ x("ln -s ~/.dotfiles/gitconfig ~/.gitconfig")
 x("ln -s ~/.dotfiles/zshrc ~/.zshrc")
 x("ln -s ~/.dotfiles/vimrc.before ~/.vimrc.before")
 x("ln -s ~/.dotfiles/vimrc.after ~/.vimrc.after")
+x("ln -s ~/.dotfiles/gvimrc.after ~/.gvimrc.after")
 
 
 # install homebrew (if not installed)

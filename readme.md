@@ -9,5 +9,5 @@ git clone https://github.com/tomclose/dotfiles ~/.dotfiles
 # Run the setup script
 ~/.dotfiles/setup_system.rb
 
-# Sit back and relax!
+#snoozetime
 ```
