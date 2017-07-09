@@ -58,6 +58,7 @@ brew_install("zsh")
 brew_install("zsh-completions")
 unless Dir.exists?("#{Dir.home}/.oh-my-zsh")
   x('sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"')
+  x('mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc')
 end
 
 # Install homebrew git
