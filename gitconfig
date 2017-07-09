@@ -1,0 +1,17 @@
+
+[hub]
+protocol = https
+
+[core]
+	excludesfile = /Users/tomclose/.gitignore_global
+	editor = vim
+
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[user]
+	name = Tom Close
+	email = tom.close@cantab.net
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

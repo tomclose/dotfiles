@@ -1,0 +1,64 @@
+inoremap jk <esc>
+
+" editing config
+nnoremap <leader>erc :vsplit ~/.vimrc.after<cr>
+nnoremap <leader>ercb :vsplit ~/.vimrc.before<cr>
+nnoremap <leader>src :source ~/.vimrc.after<cr>
+
+" windows
+" =======
+
+nnoremap <leader>l <esc><C-w>l
+nnoremap <leader>h <esc><C-w>h
+nnoremap <leader>j <esc><C-w>j
+nnoremap <leader>k <esc><C-w>k
+" close
+nnoremap <leader>q <esc><C-w>q
+" rearrange
+nnoremap <leader>mh <C-w>H :NERDTreeToggle<cr> :NERDTreeToggle<cr>
+nnoremap <leader>ml <C-w>L
+nnoremap <leader>mj <C-w>J
+nnoremap <leader>mk <C-w>K
+" buffers
+nnoremap <leader>p :bp<cr>
+nnoremap <leader>n :bn<cr>
+" nerdtree
+nnoremap <leader>nn :NERDTreeToggle<cr>
+
+" split
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>s :split<cr>
+
+
+nnoremap <leader>gr :!ack <cword> --ruby<CR>
+
+" clear highlighting
+nnoremap <leader>/ :noh<cr>
+
+" saving
+nnoremap <leader>w <esc>:w<cr>
+
+" no beeping
+set vb t_vb=
+
+let NERDTreeShowHidden=1
+
+" ruby formating
+" ==============
+
+" titles
+" underline title
+nnoremap <leader>ut yypwv$r=j
+
+
+" to stop 'missing <li> [html/tidy]' errors in hbs templates
+" https://github.com/scrooloose/syntastic/issues/831#issuecomment-27191934
+let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
+
+" replace all
+nnoremap <leader>r *``:'{,'}s/\<<C-r>=expand('<cword>')<CR>\>//g<left><left>
+
+
+" Line wrapping
+" =============
+set textwidth=0 wrapmargin=0
