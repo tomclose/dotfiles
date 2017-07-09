@@ -43,7 +43,10 @@ x("ln -s ~/.dotfiles/gvimrc.after ~/.gvimrc.after")
 
 # install homebrew (if not installed)
 heading("Installing brew")
-unless system("which brew")
+if system("which brew")
+  # if you're setting up a second account on a laptop with brew already installed, you will need
+  # to change the permissions of /usr/local to allow both accounts to use homebrew: https://gist.github.com/jaibeee/9a4ea6aa9d428bc77925
+else # install homebrew
   x("mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew")
 end
 
