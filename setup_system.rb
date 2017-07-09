@@ -64,4 +64,13 @@ end
 heading("Installing git")
 brew_install("git")
 
+# Iterm2
+# Need to install iterm2 first. Can I do that from a script?
+
+# Following instructions from from http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
+# Specify the preferences directory
+x('defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm2_profile"')
+# Tell iTerm2 to use the custom preferences in the directory
+x('defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true')
+
 
