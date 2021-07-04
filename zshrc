@@ -6,9 +6,11 @@ eval "$(rbenv init -)"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/tomclose/.oh-my-zsh
 
+
 ZSH_THEME="avit"
 
-
+# klab settings
+export KLAB_EVMS_PATH=/Users/tomclose/magmo/kframework/klab/evm-semantics
 
 
 
@@ -67,18 +69,71 @@ alias erc='vim ~/.zshrc'
 alias src='source ~/.zshrc'
 
 alias gpp='git push && git push production'
-alias hrcp='heroku run rails c --remote production'
+alias hrcp='heroku run rails c -r prod'
+alias hrcd='heroku run rails c -r demo'
 alias hrcs='heroku run rails c --remote staging'
 alias rtp='rake db:migrate && rake db:test:prepare && spring stop'
 
 alias hglt='highlight -O rtf --font-size 24 --font Courier --style solarized-dark --src-lang ruby'
 
+# docker compose shortcut e.g. `d rspec` or `d rails s`
+alias d='docker-compose run --rm app $*'
+
+alias be='bundle exec'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# added by Anaconda 2.3.0 installer
-export PATH="/Users/tomclose/anaconda/bin:$PATH"
+# added by Anaconda3 2019.10 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/tomclose/opt/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/tomclose/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tomclose/opt/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/tomclose/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
+# added by rustup
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # known security risk!
 export PATH="./bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+export HUSKY_SKIP_HOOKS=1
+
+
+. /usr/local/opt/asdf/asdf.sh
+
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
